@@ -86,6 +86,7 @@ pytest
 * Add schema validation
 * Test against a real API with proper validation rules
 * Integrate into a CI/CD pipeline
+* Make a sanity check through the data base of the Post endpoint to rule out faulty or inadequate data.
 
 ---
 
