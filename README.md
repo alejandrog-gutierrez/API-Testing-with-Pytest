@@ -91,4 +91,5 @@ pytest
 
 ## 👤 Author
 
+Alejandro Gutiérrez,
 QA Automation practice project focused on API testing fundamentals and test design.
