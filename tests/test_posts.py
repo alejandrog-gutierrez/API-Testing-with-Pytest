@@ -1,23 +1,22 @@
-import requests
-BASE_URL = "https://jsonplaceholder.typicode.com/"
-def test_get_homepage():
-    response = requests.get(f"{BASE_URL}")
-    assert response.status_code == 200
-    print(response.status_code)
+from utils.api_client import get_post, get_all_posts, create_post, payload_builder, get_posts_by_user, delete_post, \
+    patch_post
 
-def get_post(post_id):
-    return requests.get(f"{BASE_URL}/posts/{post_id}")
-
-def test_get_posts():
-    response = requests.get(f"{BASE_URL}/posts")
+def test_get_all_posts():
+    response = get_all_posts()
     assert response.status_code == 200
     data = response.json()
+    assert isinstance(data,list)
     assert len(data) > 0
-    first_post = data[0]
-    assert "userId" in first_post
-    assert "id" in first_post
-    assert "title" in first_post
-    assert "body" in first_post
+
+def test_post_structure():
+    response = get_all_posts()
+    assert response.status_code == 200
+    data = response.json()
+    for post in data:
+        assert "userId" in post
+        assert "id" in post
+        assert "title" in post
+        assert "body" in post
 
 def test_post_lower_limit():
     response = get_post(1)
@@ -49,14 +48,8 @@ def test_post_negative_id():
     data = response.json()
     assert data == {} or data is None
 
-def create_post(payload):
-    return requests.post(f"{BASE_URL}/posts", json=payload)
-
-def payload_build(title, body, userId):
-    return {"title": title, "body": body, "userId": userId}
-
 def test_create_post():
-    payload = payload_build("Test Post", "This is a test post and should be treated as such", 1)
+    payload = payload_builder("Test Post", "This is a test post and should be treated as such", 1)
     response = create_post(payload)
     assert response.status_code == 201
     data = response.json()
@@ -66,7 +59,7 @@ def test_create_post():
     assert "id" in data
 
 def test_invalid_title():
-    payload = payload_build(1, "This is a test post and should be treated as such", 1)
+    payload = payload_builder(1, "This is a test post and should be treated as such", 1)
     response = create_post(payload)
     assert response.status_code == 201
     data = response.json()
@@ -76,7 +69,7 @@ def test_invalid_title():
     assert "id" in data
 
 def test_invalid_body():
-    payload = payload_build("Test",1, 1)
+    payload = payload_builder("Test",1, 1)
     response = create_post(payload)
     assert response.status_code == 201
     data = response.json()
@@ -86,7 +79,7 @@ def test_invalid_body():
     assert "id" in data
 
 def test_invalid_userId():
-    payload = payload_build("Test Post", "This is a test post and should be treated as such","A" )
+    payload = payload_builder("Test Post", "This is a test post and should be treated as such","A" )
     response = create_post(payload)
     assert response.status_code == 201
     data = response.json()
@@ -96,7 +89,7 @@ def test_invalid_userId():
     assert "id" in data
 
 def test_create_post_invalid():
-    payload = payload_build("","", None)
+    payload = payload_builder("","", None)
     response = create_post(payload)
     assert response.status_code == 201
     data = response.json()
@@ -117,3 +110,33 @@ def test_missing_field():
     assert data["userId"] == payload["userId"]
     assert "body" not in payload
     assert "id" in data
+
+def test_get_posts_by_user_id():
+    response = get_posts_by_user(1)
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) > 0
+    for post in data:
+        assert post["userId"] == 1
+
+def test_get_post_by_invalid_user():
+    response = get_posts_by_user(11)
+    assert response.status_code == 200
+    data = response.json()
+    assert data == []
+
+def test_delete_post():
+    response = delete_post(1)
+    assert response.status_code == 200
+    data = response.json()
+    assert data == {}
+
+def test_patch_post():
+    response = patch_post(1,"Alejandro","This is a test",1)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["title"] == "Alejandro"
+    assert data["userId"] == 1
+    assert data["body"] == "This is a test"
+    assert data["id"] == 1
