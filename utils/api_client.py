@@ -12,5 +12,7 @@ def get_posts_by_user(userId):
     return requests.get(f"{BASE_URL}/posts",params={'userId':userId})
 def delete_post(id):
     return requests.delete(f"{BASE_URL}/posts/{id}")
-def patch_post(id, title, body, userId):
-    return requests.patch(f"{BASE_URL}/posts/{id}", json={"title": title, "body": body, "userId": userId})
+def put_post(id, title, body, userId):
+    return requests.put(f"{BASE_URL}/posts/{id}", json={"title": title, "body": body, "userId": userId})
+def patch_post(id, title):
+    return requests.patch(f"{BASE_URL}/posts/{id}", json={"title": title})

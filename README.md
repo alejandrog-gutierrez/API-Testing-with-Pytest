@@ -1,96 +1,119 @@
-# API Testing Project – JSONPlaceholder
+# API Automation Testing Project – JSONPlaceholder (/posts)
 
-## 📌 Overview
+## What is this?
 
-The objective of this project is to validate the behavior of the post retrieval and creation endpoints.
-It includes positive scenarios, boundary conditions, and negative cases, ensuring the structure and consistency of API responses.
-
----
-
-## 🔗 Endpoints Tested
-
-* `GET /posts`
-* `GET /posts/{id}`
-* `POST /posts`
+This project is an automated API testing suite built with Python, Pytest, and Requests. It focuses on validating the behavior of a REST API by executing different types of tests, including functional, negative and exploratory scenarios using the mock platform JSONPlaceholder.
 
 ---
 
-## 🧪 Testing Scope
+## Product / Feature Under Test
 
-### ✔ Scenarios Covered
+The `/posts` endpoint of the JSONPlaceholder REST API, including the following operations:
 
-* Positive scenarios (valid requests)
-* Negative scenarios (invalid or unexpected input)
-* Boundary testing (IDs at limits and out-of-range)
-* Empty and missing field cases
-
----
-
-## 🔍 Validations Performed
-
-* Status code validation
-* Response structure validation
-* Required field presence (`userId`, `id`, `title`, `body`)
-* Data type validation
-* Data consistency between request payload and response
+- GET (single post, all posts, posts by user) (`get_post` `get_all_posts` `get_post_by_user`)
+- POST (create posts) (`payload_builder` `create_post`)
+- PUT (replace posts) (`put_post`)
+- PATCH (partial updates) (`patch_post`)
+- DELETE (remove posts) (`delete_post`)
 
 ---
 
-## ⚠️ API Limitations
+## Objective
 
-This project uses JSONPlaceholder, which is a mock API.
-
-The API does not validate request payloads:
-
-* POST requests always return `201 Created`
-* Invalid or incomplete data is still accepted
-
-Because of this:
-
-* Negative tests cannot rely on expected error codes (e.g., `400` or `404`)
-* Tests focus on analyzing response behavior rather than enforcing validation failures
+The objective of this project is to validate API behavior under different test scenarios and build a reusable and scalable test automation framework using Python, Pytest, and Requests
 
 ---
 
-## 🧠 Testing Approach
+## Scope
 
-Due to the API limitations, the testing strategy is adapted to:
+### Included:
+- Testing of `/posts` endpoint
+- Validation of `GET`, `POST`, `PUT`, `PATCH`, `DELETE` methods
+- User-based filtering via `/posts?userId=`
+- Positive, edge, and exploratory test cases
 
-* Validate actual system behavior instead of ideal behavior
-* Ensure consistency in API responses
-* Identify behaviors that would be considered defects in a real production system
-
----
-
-## 🛠️ Technologies Used
-
-* Python
-* Pytest
-* Requests
+### Not included:
+- Authentication testing (not supported by the API)
+- Performance testing
+- Strict data validation rules (API does not enforce constraints)
+- Persistent data validation (API is mock-based)
 
 ---
 
-## ▶️ How to Run
+## Project Structure / Artifacts
 
-```bash
-pip install pytest requests
-pytest
-```
+The project includes:
 
----
-
-## 📈 Future Improvements
-
-* Add parameterized tests using Pytest
-* Implement fixtures for better test structure
-* Add schema validation
-* Test against a real API with proper validation rules
-* Integrate into a CI/CD pipeline
-* Make a sanity check through the data base of the Post endpoint to rule out faulty or inadequate data.
+- Test suite built with Pytest
+- API client module containing reusable request functions
+- Helper functions for:
+  - Payload generation
+  - Request execution
+  - Response validation
+  - Negative and exploratory scenarios
+- Organized separation between API logic and test logic
 
 ---
 
-## 👤 Author
+## Key Decisions
 
-Alejandro Gutiérrez,
-QA Automation practice project focused on API testing fundamentals and test design.
+- Helpers were implemented to reduce code duplication and improve readability and scalability.
+- Separation between API client and test files was used to avoid tight coupling and improve maintainability.
+- Pytest and Requests were chosen because they are the tools used during development and learning of this project.
+
+---
+
+## Results
+
+The project successfully covers the main endpoints of the API and validates different types of scenarios using both functional and exploratory testing.
+
+A modular and scalable test structure was implemented, making it easier to maintain and extend the test suite in the future.
+
+---
+
+## What Could Be Improved
+
+- Implement parametrized tests to reduce repetition
+- Improve assert strictness and validation depth
+- Add more structured negative test handling
+- Further optimize test organization and separation of concerns
+- Introduce testing against APIs with real validation rules
+
+---
+
+## Tools Used In This Project
+
+![Python](https://img.shields.io/badge/Python-6A5ACD?style=for-the-badge&logo=python&logoColor=white)
+![Pytest](https://img.shields.io/badge/Pytest-1E90FF?style=for-the-badge&logo=pytest&logoColor=white)
+![Requests](https://img.shields.io/badge/Requests-40E0D0?style=for-the-badge&logo=python&logoColor=black)
+
+---
+
+## Test Design Methodologies
+
+![API Testing](https://img.shields.io/badge/API%20Testing-4CAF50?style=for-the-badge)
+![Functional Testing](https://img.shields.io/badge/Functional%20Testing-FFD700?style=for-the-badge&logoColor=black)
+![Negative Testing](https://img.shields.io/badge/Negative%20Testing-FF0000?style=for-the-badge)
+![Exploratory Testing](https://img.shields.io/badge/Exploratory%20Testing-FFFFFF?style=for-the-badge&logoColor=black)
+
+---
+
+## Notes
+
+JSONPlaceholder is a mock API. It does not enforce strict validation rules or persist changes, so tests focus on response structure, behavior, and consistency rather than backend enforcement.
+
+---
+
+## How to Run Tests
+
+### 1. Clone the repository
+git clone <repo-url>
+
+### 2. Move into the project directory
+cd <project-folder>
+
+### 3. Install dependencies
+pip install -r requirements.txt
+
+### 4. Run the test suite
+pytest tests/test_posts.py
