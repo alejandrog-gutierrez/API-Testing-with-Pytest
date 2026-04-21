@@ -117,3 +117,13 @@ pip install -r requirements.txt
 
 ### 4. Run the test suite
 pytest tests/test_posts.py
+
+---
+
+## Contact me!
+You liked my work? Let´s talk about working together!
+[![Email](https://img.shields.io/badge/Email-aggdl2428%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:aggdl2428@gmail.com)
+
+[![Phone](https://img.shields.io/badge/Phone-%2B507%2067848724-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](tel:+50767848724)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Alejandro%20Guti%C3%A9rrez-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alejandro-gutierrez-deleon-qa)
