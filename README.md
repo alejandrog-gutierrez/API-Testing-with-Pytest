@@ -107,10 +107,10 @@ JSONPlaceholder is a mock API. It does not enforce strict validation rules or pe
 ## How to Run Tests
 
 ### 1. Clone the repository
-git clone <repo-url>
+git clone <https://github.com/alejandrog-gutierrez/API-Testing-with-Pytest>
 
 ### 2. Move into the project directory
-cd <project-folder>
+cd <API-Testing-with-Pytest>
 
 ### 3. Install dependencies
 pip install -r requirements.txt
