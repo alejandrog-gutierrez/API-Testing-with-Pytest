@@ -10,17 +10,21 @@ This project is an automated API testing suite built with Python, Pytest, and Re
 
 The `/posts` endpoint of the JSONPlaceholder REST API, including the following operations:
 
-- GET (single post, all posts, posts by user) (`get_post` `get_all_posts` `get_post_by_user`)
-- POST (create posts) (`payload_builder` `create_post`)
-- PUT (replace posts) (`put_post`)
-- PATCH (partial updates) (`patch_post`)
-- DELETE (remove posts) (`delete_post`)
+![GET](https://img.shields.io/badge/GET-Fetch%20Posts%20Data-brightgreen)
+
+![POST](https://img.shields.io/badge/POST-Create%20New%20Post-00bcd4)
+
+![PUT](https://img.shields.io/badge/PUT-Full%20Update%20Post-ffeb3b)
+
+![PATCH](https://img.shields.io/badge/PATCH-Partial%20Update%20Post-orange)
+
+![DELETE](https://img.shields.io/badge/DELETE-Delete%20Post-red)
 
 ---
 
 ## Objective
 
-The objective of this project is to validate API behavior under different test scenarios and build a reusable and scalable test automation framework using Python, Pytest, and Requests
+In this project, I designed test cases for a mock REST API (JSONPlaceholder), covering create, read, update, and delete operations (CRUD) through GET, POST, PUT, PATCH, and DELETE methods, using positive, negative, and exploratory scenarios. The tests were structured in a scalable and maintainable automated script using Python and Pytest, which improves reusability and reduces execution time compared to manual testing. The goal was to validate the functional behavior of the endpoints, the consistency of data handling, and the correct response management under different types of input. From a risk perspective, these tests help identify potential regressions, inconsistencies between operations, and issues in state or data handling, which in a real-world environment could directly impact system reliability and the user experience, leading to incorrect results, data loss, or unpredictable API behavior.
 
 ---
 
