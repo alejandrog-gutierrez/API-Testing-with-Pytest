@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This project is an automated API testing suite built with Python, Pytest, and Requests. It focuses on validating the behavior of a REST API by executing different types of tests, including functional, negative and exploratory scenarios using the mock platform JSONPlaceholder.
+This project is an automated API testing suite for validating RESTful behavior of the mock API JSONPlaceholder /posts endpoint using Python, Pytest, and Requests. It focuses on verifying CRUD operations through functional, negative, and exploratory test scenarios.
 
 ---
 
@@ -20,64 +20,65 @@ The `/posts` endpoint of the JSONPlaceholder REST API, including the following o
 
 ## Objective
 
-In this project, I designed test cases for a mock `REST API` (`JSONPlaceholder`), covering create, read, update, and delete operations (`CRUD`) on the /posts resource using `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` methods. The testing approach included positive, negative, and exploratory scenarios. The tests were structured in a scalable and maintainable automated script using ``Python``, ``Pytest`` and the package ``Requests``, which improves reusability, can be expanded upon and reduces execution time compared to manual testing. The goal was to validate the functional behavior of the API´s ``POST`` endpoint, the consistency of data handling, and the correct response management under different types of input, including incorrect data, empty data and missing fields. From a risk perspective, these tests help identify potential regressions across changes or versions, inconsistencies between operations, corrupt data and issues in state or data handling, which in a real-world environment could directly impact system reliability and the overall user experience, leading to incorrect results, data loss, or unpredictable API behavior.
+In this project, I designed test cases for a mock `REST API` (`JSONPlaceholder`), covering create, read, update, and delete operations (`CRUD`) on the /posts resource using `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` methods. The testing approach included positive, negative, boundary and exploratory scenarios. The tests were structured in a scalable and maintainable automated script using ``Python``, ``Pytest`` and the package ``Requests``, which improves reusability, can be expanded upon, and reduces execution time compared to manual testing. The goal was to validate the functional behavior of the API´s ``POST`` endpoint, the consistency of data handling, and the correct response management under different types of input, including incorrect data, empty data and missing fields. From a risk perspective, these tests help identify potential regressions across changes or versions, inconsistencies between operations, corrupt data and issues in state or data handling, which in a real-world environment could directly impact system reliability and the overall user experience, leading to incorrect results, data loss, or unpredictable API behavior.
 
 ---
 
 ## Scope
 
 ### Included:
-- Testing of `/posts` endpoint
-- Validation of `GET`, `POST`, `PUT`, `PATCH`, `DELETE` methods
-- User-based filtering via `/posts?userId=`
-- Positive, edge, and exploratory test cases
+- Testing of the `/posts` endpoint, focusing on CRUD operations (GET, POST, PUT, PATCH, DELETE).
+- Validation of response behavior, status codes, and data consistency across requests.
+- User filtering via `/posts?userId=`.
+- Positive, negative, boundary, and exploratory scenarios based on available API behavior.
 
 ### Not included:
-- Authentication testing (not supported by the API)
-- Performance testing
-- Strict data validation rules (API does not enforce constraints)
-- Persistent data validation (API is mock-based)
+- Authentication testing, since JSONPlaceholder does not implement auth or security layers.
+- Performance or load testing, as the scope was focused on functional validation only.
+- Strict data validation rules, since the API does not enforce backend constraints or persistence.
+- Database or persistence validation, because responses are simulated and not stored permanently.
 
 ---
 
 ## Project Structure / Artifacts
 
-The project includes:
+The test framework is organized in a modular way, with a clear separation of responsibilities to keep things maintainable and easy to scale over time.
 
-- Test suite built with Pytest
-- API client module containing reusable request functions
-- Helper functions for:
-  - Payload generation
-  - Request execution
-  - Response validation
-  - Negative and exploratory scenarios
-- Organized separation between API logic and test logic
+ - Test Layer (Pytest): This is where all the test cases live. It covers the /posts resource and checks different scenarios like positive flows, negative cases, boundaries, and exploratory testing.
+ - API Client Layer: This layer handles all the HTTP requests using the Requests library. Instead of calling the API directly inside the tests, I wrapped the requests into reusable methods (GET, POST, PUT, PATCH, DELETE).
+ - Helper Layer: This includes small utilities like payload generation, response checks, and test data handling. The idea here was to avoid repeating code and keep the tests cleaner.
+
+Overall, the idea was to keep test logic focused on behavior, while everything related to API calls and supporting logic stays separated and reusable.
 
 ---
 
 ## Key Decisions
 
-- Helpers were implemented to reduce code duplication and improve readability and scalability.
-- Separation between API client and test files was used to avoid tight coupling and improve maintainability.
-- Pytest and Requests were chosen because they are the tools used during development and learning of this project.
+ - Helpers were implemented to reduce code duplication, improve readability, and support scalability, while keeping test cases focused on behavior rather than implementation details.
+ - A clear separation between the API client and test files was applied to avoid tight coupling and improve maintainability. Helper functions were created for each type of request, making them easily reusable and called within test cases.
+ - Pytest and Requests were selected as the main tools for this project due to their suitability for API testing, flexibility, and ease of integration in automated test frameworks.
 
 ---
 
 ## Results
 
-The project successfully covers the main endpoints of the API and validates different types of scenarios using both functional and exploratory testing.
+ The test suite was built and executed against the /posts endpoint, covering around 20–30 test cases across GET, POST, PUT, PATCH, and DELETE operations. The focus was on checking response behavior, status codes, and consistency between request payloads and API responses.
 
-A modular and scalable test structure was implemented, making it easier to maintain and extend the test suite in the future.
+During testing, I validated positive flows, invalid inputs, boundary conditions, and exploratory scenarios. Since JSONPlaceholder is a mock API, most responses are simulated rather than truly validated or persisted, which meant that some negative scenarios behaved more like exploratory checks instead of strict failures.
+
+Even with those limitations, the suite helped me observe how the API responds under different conditions, and gave me a clearer understanding of CRUD behavior, response consistency, and test coverage strategy.
+
+The structure also made it easier to run and extend tests, since API calls and test logic were separated from reusable helpers.
 
 ---
 
 ## What Could Be Improved
 
-- Implement parametrized tests to reduce repetition
-- Improve assert strictness and validation depth
-- Add more structured negative test handling
-- Further optimize test organization and separation of concerns
-- Introduce testing against APIs with real validation rules
+ - Add more parametrized tests to reduce repetition, especially for similar CRUD scenarios.
+ - Improve helper flexibility, since a few tests still required raw or “manual” requests outside the utility functions.
+ - Better separation of helpers from the start (they were created as needed during development, which led to some structure decisions being reactive rather than planned).
+ - Expand test coverage beyond JSONPlaceholder to a real API with proper validation rules and data persistence.
+ - Introduce more structured negative testing, since the mock nature of the API limited strict validation behavior.
 
 ---
 
@@ -113,7 +114,7 @@ git clone <https://github.com/alejandrog-gutierrez/API-Testing-with-Pytest>
 cd API-Testing-with-Pytest
 
 ### 3. Install dependencies
-pip install -r requirements.txt
+pip install requests
 
 ### 4. Run the test suite
 pytest tests/test_posts.py
@@ -122,8 +123,7 @@ pytest tests/test_posts.py
 
 ## Contact me!
 You liked my work? Let´s talk about working together!
+
 [![Email](https://img.shields.io/badge/Email-aggdl2428%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:aggdl2428@gmail.com)
-
 [![Phone](https://img.shields.io/badge/Phone-%2B507%2067848724-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](tel:+50767848724)
-
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Alejandro%20Guti%C3%A9rrez-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alejandro-gutierrez-deleon-qa)
