@@ -64,11 +64,11 @@ Overall, the idea was to keep test logic focused on behavior, while everything r
 
 ## Results
 
- The test suite was built and executed against the /posts endpoint, covering around 20–30 test cases across GET, POST, PUT, PATCH, and DELETE operations. The focus was on checking response behavior, status codes, and consistency between request payloads and API responses.
+ - The test suite was built and executed against the /posts endpoint, covering around 20–30 test cases across GET, POST, PUT, PATCH, and DELETE operations. The focus was on checking response behavior, status codes, and consistency between request payloads and API responses.
 
-During testing, I validated positive flows, invalid inputs, boundary conditions, and exploratory scenarios. Since JSONPlaceholder is a mock API, most responses are simulated rather than truly validated or persisted, which meant that some negative scenarios behaved more like exploratory checks instead of strict failures.
+ - During testing, I validated positive flows, invalid inputs, boundary conditions, and exploratory scenarios. Since JSONPlaceholder is a mock API, most responses are simulated rather than truly validated or persisted, which meant that some negative scenarios behaved more like exploratory checks instead of strict failures.
 
-Even with those limitations, the suite helped me observe how the API responds under different conditions, and gave me a clearer understanding of CRUD behavior, response consistency, and test coverage strategy.
+ - Even with those limitations, the suite helped me observe how the API responds under different conditions, and gave me a clearer understanding of CRUD behavior, response consistency, and test coverage strategy.
 
 The structure also made it easier to run and extend tests, since API calls and test logic were separated from reusable helpers.
 
