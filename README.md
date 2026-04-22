@@ -22,7 +22,7 @@ The `/posts` endpoint of the JSONPlaceholder REST API, including the following o
 
 The objective of this project was to validate the behavior of the `/posts` endpoint by testing its CRUD operations under different input scenarios in a mock REST API.
 
-The goal was to detect issues that could lead to production problems such as inconsistent responses, incorrect handling of data, or unreliable API behavior, which in real systems could result in data corruption, poor user experience, or operational failures.
+The goal was to test and validate if the API behaves correctly, manages errors with grace and detect issues that could lead to production problems such as inconsistent/incorrect responses, incorrect handling of data, or unreliable/unexpected API behavior, which in real systems and situations could result in data corruption, overall poor user experience, or in the worst case-scenario, operational and server failures or crashes.
 
 ---
 
