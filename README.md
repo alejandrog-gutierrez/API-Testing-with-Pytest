@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This project is an automated API testing suite for validating RESTful behavior of the mock API JSONPlaceholder /posts endpoint using Python, Pytest, and Requests. It focuses on verifying CRUD operations through functional, negative, and exploratory test scenarios.
+This project is an automated API testing suite for validating RESTful behavior of the mock API JSONPlaceholder /posts endpoint using Python, Pytest, and Requests.
 
 ---
 
@@ -20,7 +20,9 @@ The `/posts` endpoint of the JSONPlaceholder REST API, including the following o
 
 ## Objective
 
-In this project, I designed test cases for a mock `REST API` (`JSONPlaceholder`), covering create, read, update, and delete operations (`CRUD`) on the /posts resource using `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` methods. The testing approach included positive, negative, boundary and exploratory scenarios. The tests were structured in a scalable and maintainable automated script using ``Python``, ``Pytest`` and the package ``Requests``, which improves reusability, can be expanded upon, and reduces execution time compared to manual testing. The goal was to validate the functional behavior of the API´s ``POST`` endpoint, the consistency of data handling, and the correct response management under different types of input, including incorrect data, empty data and missing fields. From a risk perspective, these tests help identify potential regressions across changes or versions, inconsistencies between operations, corrupt data and issues in state or data handling, which in a real-world environment could directly impact system reliability and the overall user experience, leading to incorrect results, data loss, or unpredictable API behavior.
+The objective of this project was to validate the behavior of the `/posts` endpoint by testing its CRUD operations under different input scenarios in a mock REST API.
+
+The goal was to detect issues that could lead to production problems such as inconsistent responses, incorrect handling of data, or unreliable API behavior, which in real systems could result in data corruption, poor user experience, or operational failures.
 
 ---
 
