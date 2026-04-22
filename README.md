@@ -11,20 +11,16 @@ This project is an automated API testing suite built with Python, Pytest, and Re
 The `/posts` endpoint of the JSONPlaceholder REST API, including the following operations:
 
 ![GET](https://img.shields.io/badge/GET-Fetch%20Posts%20Data-brightgreen)
-
 ![POST](https://img.shields.io/badge/POST-Create%20New%20Post-00bcd4)
-
 ![PUT](https://img.shields.io/badge/PUT-Full%20Update%20Post-ffeb3b)
-
 ![PATCH](https://img.shields.io/badge/PATCH-Partial%20Update%20Post-orange)
-
 ![DELETE](https://img.shields.io/badge/DELETE-Delete%20Post-red)
 
 ---
 
 ## Objective
 
-In this project, I designed test cases for a mock REST API (JSONPlaceholder), covering create, read, update, and delete operations (CRUD) through GET, POST, PUT, PATCH, and DELETE methods, using positive, negative, and exploratory scenarios. The tests were structured in a scalable and maintainable automated script using Python and Pytest, which improves reusability and reduces execution time compared to manual testing. The goal was to validate the functional behavior of the endpoints, the consistency of data handling, and the correct response management under different types of input. From a risk perspective, these tests help identify potential regressions, inconsistencies between operations, and issues in state or data handling, which in a real-world environment could directly impact system reliability and the user experience, leading to incorrect results, data loss, or unpredictable API behavior.
+In this project, I designed test cases for a mock `REST API` (`JSONPlaceholder`), covering create, read, update, and delete operations (`CRUD`) on the /posts resource using `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` methods. The testing approach included positive, negative, and exploratory scenarios. The tests were structured in a scalable and maintainable automated script using ``Python``, ``Pytest`` and the package ``Requests``, which improves reusability, can be expanded upon and reduces execution time compared to manual testing. The goal was to validate the functional behavior of the API´s ``POST`` endpoint, the consistency of data handling, and the correct response management under different types of input, including incorrect data, empty data and missing fields. From a risk perspective, these tests help identify potential regressions across changes or versions, inconsistencies between operations, corrupt data and issues in state or data handling, which in a real-world environment could directly impact system reliability and the overall user experience, leading to incorrect results, data loss, or unpredictable API behavior.
 
 ---
 
